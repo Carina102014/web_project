@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date Range Picker Example</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+   
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css">
+
+    <link rel="stylesheet" type="text/css" href="rent.css" /> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+  
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Închiriere Auto</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="principal.html">Mașini</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="cars.html">Detalii Mașini</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="find.html">Info</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" id="logoutBtn"><i class="fas fa-user"></i> Logout</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+</nav>
+
+
+<div id="main-container" class="container">
+    <div class="row justify-content-center">
+        
+        <div id="image-container" class="col-md-4">
+          
+            <img id="car-image" src="" alt="Your Image" class="img-fluid">
+        </div>
+       
+        <div class="col-md-8">
+            <div id="calendar-container">
+                <h3 class="mb-4">Selectează o perioadă de timp</h3>
+                <input type="text" id="date-range-picker" class="form-control">
+            </div>
+            <div id="price-container">
+                <h3 class="">Prețul pe zi</h3>
+                <p id="price-per-day" class="h5">0 RON</p>
+                
+                <h3 class="">Prețul total</h3>
+                <p id="total-price" class="h5">0 RON</p>
+                <button id="rent-button" class="btn btn-primary">Închiriază</button>
+            </div>
+        </div>
+    </div>
+    <div id="rating-container">
+      <h3 class="mb-4">Evaluează această mașină</h3>
+      <div id="star-rating" class="star-rating">
+          <i class="far fa-star" data-value="1"></i>
+          <i class="far fa-star" data-value="2"></i>
+          <i class="far fa-star" data-value="3"></i>
+          <i class="far fa-star" data-value="4"></i>
+          <i class="far fa-star" data-value="5"></i>
+      </div>
+      <p id="average-rating" class="h5">Rating mediu: 0</p>
+  </div>
+    
+</div>
+
+
+<footer class="bg-dark text-white text-center py-4">
+    <div class="container">
+      <p>&copy; 2024 Închiriere Auto. Toate drepturile rezervate.</p>
+       <a href="www.csac.ro">www.csac.ro</a>
+      <a href=" https://scanstart.ro/"> https://scanstart.ro/</a>
+      <a href="https://graffino.com/">https://graffino.com/</a>
+    </div>
+  </footer>
+<!-- Firebase JavaScript SDK -->
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+
+<!-- jQuery, Popper.js, Bootstrap JS, Moment.js, Date Range Picker JS -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyD6zg3u17kX4crlO5js5f7P1b_vAbg9-_U",
+      authDomain: "proiect-b5d26.firebaseapp.com",
+      databaseURL: "https://proiect-b5d26-default-rtdb.firebaseio.com",
+      projectId: "proiect-b5d26",
+      storageBucket: "proiect-b5d26.appspot.com",
+      messagingSenderId: "328224211496",
+      appId: "1:328224211496:web:1dba92c2ec73d00f7bab1d"
+    };
+  
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    
+    const db = firebase.database();
+
+    var unavailableDates = []; 
+
+
+
+
+$(document).ready(function() {
+    var carId = sessionStorage.getItem('carId');
+    var imageUrl = sessionStorage.getItem('imageUrl');
+    $('#car-image').attr('src', imageUrl);
+    
+  
+    if (carId) {
+    
+        initializeDateRangePicker(carId);
+
+        $('#date-range-picker').off('apply.daterangepicker');
+        $('#date-range-picker').on('apply.daterangepicker', function(ev, picker) {
+            $(this).val(picker.startDate.format('YYYY-MM-DD') + ' - ' + picker.endDate.format('YYYY-MM-DD'));
+            var days = picker.endDate.diff(picker.startDate, 'days') + 1;
+            var pricePerDay = calculatePricePerDay(carId);
+            var totalPrice = pricePerDay * days;
+            $('#total-price').text(totalPrice + ' RON');
+        });
+
+        $('#rent-button').click(function() {
+            var startDate = $('#date-range-picker').data('daterangepicker').startDate.format('YYYY-MM-DD');
+            var endDate = $('#date-range-picker').data('daterangepicker').endDate.format('YYYY-MM-DD');
+
+            var userId = firebase.auth().currentUser.uid;
+
+            var rentalData = {
+                userId: userId,
+                carId: carId,
+                startDate: startDate,
+                endDate: endDate
+            };
+
+            var newRentalKey = db.ref().child('rentals').push().key;
+            var updates = {};
+            updates['/rentals/' + newRentalKey] = rentalData;
+
+            db.ref().update(updates)
+                .then(function() {
+                    console.log('Închirierea a fost înregistrată cu succes.');
+                    alert('Închirierea a fost înregistrată cu succes.');
+                    initializeDateRangePicker(carId); 
+                })
+                .catch(function(error) {
+                    console.error('Eroare la închiriere:', error);
+                });
+        });
+
+       
+        function initializeDateRangePicker(carId) {
+            db.ref('rentals').orderByChild('carId').equalTo(carId).once('value', function(snapshot) {
+                var pricePerDay = calculatePricePerDay(carId);
+                $('#price-per-day').text(pricePerDay + ' RON / zi');
+
+                var unavailableDates = [];
+                snapshot.forEach(function(childSnapshot) {
+                    var rental = childSnapshot.val();
+                    var startDate = moment(rental.startDate);
+                    var endDate = moment(rental.endDate);
+                    var currentDate = startDate;
+                    while (currentDate <= endDate) {
+                        unavailableDates.push(currentDate.format('YYYY-MM-DD'));
+                        currentDate = currentDate.clone().add(1, 'days');
+                    }
+                });
+
+                $('#date-range-picker').daterangepicker({
+                    opens: 'left',
+                    locale: {
+                        format: 'YYYY-MM-DD'
+                    },
+                    maxSpan: {
+                        "days": 31
+                    },
+                    isInvalidDate: function(date) {
+                        var formattedDate = date.format('YYYY-MM-DD');
+                        return unavailableDates.indexOf(formattedDate) !== -1;
+                    }
+                });
+            });
+        }
+
+        
+        function calculatePricePerDay(carId) {
+            
+            var prices = {
+                "1": 1200,
+                "2": 1350, 
+                "3": 1400,
+                "4": 1550, 
+                "5": 1700,  
+                "6": 900  
+            };
+
+            return prices[carId] || 0;
+        }
+    } else {
+       
+        alert("Eroare: carId lipsește!");
+    }
+});
+
+
+
+    $(document).ready(function() {
+    
+    $("#logoutBtn").click(function() {
+     
+      var logout = confirm("Ești sigur că vrei să te deloghezi?");
+      if (logout == true) {
+     
+        alert("Ai fost delogat cu succes!");
+        window.location.href = "index.html";
+      } else {
+
+        alert("Delogarea a fost anulată.");
+      }
+    });
+  });
+  
+$(document).ready(function() {
+    var carId = sessionStorage.getItem('carId');
+    var imageUrl = sessionStorage.getItem('imageUrl');
+    $('#car-image').attr('src', imageUrl);
+
+    
+    firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+           
+            var userId = user.uid;
+
+          
+            initializeStarRating(carId);
+
+          
+            $('#star-rating .fa-star').on('mouseover', function() {
+                var hoverValue = $(this).data('value');
+                highlightStars(hoverValue);
+            });
+
+           
+            $('#star-rating .fa-star').on('mouseout', function() {
+                if (!$('#star-rating').hasClass('clicked')) {
+                    clearHighlight();
+                }
+            });
+
+          
+            $('#star-rating .fa-star').on('click', function() {
+                var rating = $(this).data('value');
+                saveRating(carId, userId, rating);
+                highlightStars(rating);
+                $('#star-rating').addClass('clicked');
+                setTimeout(function() {
+                    $('#star-rating').removeClass('clicked');
+                    clearHighlight();
+                    initializeStarRating(carId);
+                }, 3000);
+            });
+
+        } else {
+         
+            alert('Trebuie să fii autentificat pentru a putea evalua mașina.');
+            window.location.href = "login.html"; 
+        }
+    });
+
+    function highlightStars(value) {
+        $('#star-rating .fa-star').each(function() {
+            var starValue = $(this).data('value');
+            if (starValue <= value) {
+                $(this).addClass('hovered');
+            } else {
+                $(this).removeClass('hovered');
+            }
+        });
+    }
+
+    function clearHighlight() {
+        $('#star-rating .fa-star').removeClass('hovered selected');
+    }
+
+    function initializeStarRating(carId) {
+        db.ref('ratings').orderByChild('carId').equalTo(carId).once('value', function(snapshot) {
+            var totalRating = 0;
+            var ratingCount = 0;
+            snapshot.forEach(function(childSnapshot) {
+                var rating = childSnapshot.val().rating;
+                totalRating += rating;
+                ratingCount++;
+            });
+            var averageRating = ratingCount ? (totalRating / ratingCount).toFixed(2) : 0;
+            $('#average-rating').text('Rating mediu: ' + averageRating);
+        }).catch(function(error) {
+            console.error('Eroare la citirea rating-urilor:', error);
+        });
+    }
+
+    function saveRating(carId, userId, rating) {
+        var ratingData = {
+            userId: userId,
+            carId: carId,
+            rating: rating
+        };
+
+        var newRatingKey = db.ref().child('ratings').push().key;
+        var updates = {};
+        updates['/ratings/' + newRatingKey] = ratingData;
+
+        db.ref().update(updates)
+            .then(function() {
+                console.log('Rating-ul a fost înregistrat cu succes.');
+                alert('Rating-ul a fost înregistrat cu succes.');
+                $('#star-rating .fa-star').removeClass('selected');
+                updateStarUI(rating);
+                initializeStarRating(carId);
+            })
+            .catch(function(error) {
+                console.error('Eroare la înregistrarea rating-ului:', error);
+            });
+    }
+
+    function updateStarUI(rating) {
+        $('#star-rating .fa-star').each(function() {
+            var starValue = $(this).data('value');
+            if (starValue <= rating) {
+                $(this).addClass('selected');
+            } else {
+                $(this).removeClass('selected');
+            }
+        });
+    }
+});
+
+</script>
+</body>
+</html>

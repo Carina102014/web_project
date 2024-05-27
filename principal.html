@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Închiriere Auto</title>
+  <!-- Includem stilurile Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+  <style>
+    body {
+      background-image: url('https://images7.alphacoders.com/369/369182.jpg');
+      color: white;
+      text-shadow: 2px 2px 4px #000000;
+    }
+
+    .jumbotron {
+      background-image: url('https://c.wallhere.com/photos/59/82/lighting_red_white_rot_classic_car_wheel_sport-902027.jpg!d');
+      background-size:auto;
+      background-position: center;
+      color: white;
+      text-shadow: 2px 2px 4px #000000;
+      opacity: 0.8;
+  
+    }
+  
+    .card {
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+  
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      
+    }
+
+    .card-body{
+      background-color: #00000096;
+      height: 250px;
+      object-fit: cover; 
+
+    }
+
+    a{
+      padding-left: 10px;
+    }
+  </style>
+  
+</head>
+<body>
+
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Închiriere Auto</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="principal.html">Mașini</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="cars.html">Detalii Mașini</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="find.html">Info</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" id="logoutBtn"><i class="fas fa-user"></i> Logout</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Jumbotron -->
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container text-center">
+      <h1 class="display-4">Închiriază o mașină</h1>
+      <p class="lead">Cele mai bune prețuri pentru închirieri auto.</p>
+    </div>
+  </div>
+
+  <!-- Secțiunea cu Mașini -->
+  <div class="container">
+    <h2 class="text-center mb-4"><strong>Gama de masini disponibile</strong></h2>
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://cimg2.ibsrv.net/ibimg/hgm/1920x1080-1/100/714/2020-porsche-taycan_100714962.jpg" class="card-img-top" alt="Porsche Taycan">
+          <div class="card-body">
+            <h5 class="card-title">Porsche Taycan</h5>
+            <p class="card-text">Un sedan electric sport de lux produs de Porsche.
+              Performanțe excelente, design atrăgător, alb imaculat și tehnologie avansată..</p>
+            <a href="#" class="btn btn-primary rent-btn" data-id="1">Închiriază acum</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://th.bing.com/th/id/R.999c9daab410378238a13cf6ace608a3?rik=iLFYwxVuOLftcQ&riu=http%3a%2f%2fwww.hdcarwallpapers.com%2fwalls%2f2017_lamborghini_huracan_performante_4-HD.jpg&ehk=5z79jlgo8UZ3xS3IYH%2bZsi26jeh0Vp2iBZNju68yVqc%3d&risl=&pid=ImgRaw&r=0" class="card-img-top" alt="Porsche_huracan">
+          <div class="card-body">
+            <h5 class="card-title">Lamborghini Huracan</h5>
+            <p class="card-text">Un supercar de lux produs de Lambor, cu un design impresionant și performanțe uimitoare.
+              Motor puternic și manevrabilitate excelentă.</p>
+            <a href="#" class="btn btn-primary rent-btn" data-id="2">Închiriază acum</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://th.bing.com/th/id/OIP.35zno9cpQrIkZ_itAak_TQHaEK?w=768&h=432&rs=1&pid=ImgDetMain" class="card-img-top" alt="Bugatti-chiron">
+          <div class="card-body">
+            <h5 class="card-title">Bugatti Chiron</h5>
+            <p class="card-text">Un hypercar de lux produs de Bugatti, cunoscut pentru performanțe extreme și designul său iconic.
+              Motor puternic W16, cea mai mare viteză și tehnologie de vârf.</p>
+            <a href="#" class="btn btn-primary rent-btn" data-id="3">Închiriază acum</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://theawesomer.com/photos/2009/03/030409_namir_2.jpg" class="card-img-top" alt="Frazer-nash">
+          <div class="card-body">
+            <h5 class="card-title">Frazer Nash</h5>
+            <p class="card-text">Un roadster clasic britanic, renumit pentru eleganța sa și performanțele de excepție.
+            Design vintage, construcție artizanală și o istorie bogată în motorsport.</p>
+            <a href="#" class="btn btn-primary rent-btn" data-id="4">Închiriază acum</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://cms.autoscout24.ch/media/3560/bmw-i8-02.jpg" class="card-img-top" alt="bmw">
+          <div class="card-body">
+            <h5 class="card-title">BMW I8</h5>
+            <p class="card-text">Un coupe hibrid de lux produs de BMW, ce combină performanța sportivă cu eficiența energetică.
+            Design futurist, tehnologie avansată și performanțe impresionante.</p>
+            <a href="#" class="btn btn-primary rent-btn" data-id="5">Închiriază acum</a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://images.hdqwalls.com/download/volkswagen-gti-gran-turismo-4k-no-2880x1800.jpg" class="card-img-top" alt="vw-golfv" style="height: 230px;">
+          <div class="card-body">
+            <h5 class="card-title">VW GOLF V</h5>
+            <p class="card-text">Un hatchback popular produs de Volkswagen, cunoscut pentru fiabilitatea și versatilitatea sa.
+            Design practic,tinand cont de economia de combustibil cat si confort la drum lung.</p>
+            <a href="#" class="btn btn-primary rent-btn" data-id="6">Închiriază acum</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="bg-dark text-white text-center py-4">
+    <div class="container">
+      <p>&copy; 2024 Închiriere Auto. Toate drepturile rezervate.</p>
+       <a href="www.csac.ro">www.csac.ro</a>
+      <a href=" https://scanstart.ro/"> https://scanstart.ro/</a>
+      <a href="https://graffino.com/">https://graffino.com/</a>
+    </div>
+  </footer>
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+    $(document).ready(function() {
+        var imageLinks = {
+            '1': 'https://cimg2.ibsrv.net/ibimg/hgm/1920x1080-1/100/714/2020-porsche-taycan_100714962.jpg',
+            '2': 'https://th.bing.com/th/id/R.999c9daab410378238a13cf6ace608a3?rik=iLFYwxVuOLftcQ&riu=http%3a%2f%2fwww.hdcarwallpapers.com%2fwalls%2f2017_lamborghini_huracan_performante_4-HD.jpg&ehk=5z79jlgo8UZ3xS3IYH%2bZsi26jeh0Vp2iBZNju68yVqc%3d&risl=&pid=ImgRaw&r=0',
+            '3': 'https://th.bing.com/th/id/OIP.35zno9cpQrIkZ_itAak_TQHaEK?w=768&h=432&rs=1&pid=ImgDetMain',
+            '4': 'https://theawesomer.com/photos/2009/03/030409_namir_2.jpg',
+            '5': 'https://cms.autoscout24.ch/media/3560/bmw-i8-02.jpg',
+            '6': 'https://images.hdqwalls.com/download/volkswagen-gti-gran-turismo-4k-no-2880x1800.jpg'
+            
+        };
+
+        $('.rent-btn').click(function() {
+            var carId = $(this).data('id');
+            var imageUrl = imageLinks[carId];
+           
+            sessionStorage.setItem('imageUrl', imageUrl);
+            sessionStorage.setItem('carId', carId);
+            window.location.href = "rent.html";
+        });
+    });
+
+    $(document).ready(function() {
+   
+    $("#logoutBtn").click(function() {
+      
+      var logout = confirm("Ești sigur că vrei să te deloghezi?");
+      if (logout == true) {
+        
+        alert("Ai fost delogat cu succes!");
+        window.location.href = "index.html";
+      } else {
+        
+        alert("Delogarea a fost anulată.");
+      }
+    });
+  });
+</script>
+
+  
+</body>
+</html>

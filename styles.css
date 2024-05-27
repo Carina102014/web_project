@@ -1,0 +1,87 @@
+body {
+    background-image: url('https://www.hdcarwallpapers.com/download/lamborghini_sc18_2019_4k_7-3840x2160.jpg'); 
+    background-position: center;
+    background-size: cover;
+    font-family: Arial, sans-serif;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+}
+
+
+.sign-up{
+  
+    width: 360px;
+    height: 560px;
+    margin: auto;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 3px;
+}
+
+h1{
+    text-align: center;
+    font-family:cursive;
+    color: dodgerblue;
+    padding-top:20px;
+}
+
+form{
+    width: 300px;
+    margin-left: 20px;
+
+}
+
+form label{
+    display: flex;
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+form input{
+    width: 100%;
+    padding: 7px;
+    border: none;
+    border: 1px solid rgb(128, 0, 255);
+    border-radius: 6px;
+    outline: none;
+    
+}
+
+input[type="button"]{
+    width: 320px;
+    height:35px;
+    margin-top: 40px;
+    border: none;
+    background-color:seagreen;
+    color:white;
+    font-size: 19px;
+
+}
+
+#par1{
+    text-align: center;
+    margin-top: 30px;
+    font-size: 15px;
+}
+
+#par2{
+    text-align: center;
+    margin-top: 40px;
+    font-size: 15px;
+}
+
+.login{ 
+    width: 360px;
+    height: 400px;
+    margin: auto;
+    border-radius: 3px;
+    background-color: rgba(255, 255, 255, 0.5);
+    }
+
+#button-login{
+    cursor: pointer;
+}
+
+#button-signup{
+    cursor: pointer;
+}

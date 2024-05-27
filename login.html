@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="styles.css" /> 
+    <title>Login</title>
+</head>
+<body>
+    <div class="login">
+        <h1>Login</h1>
+        <form>
+            <label>Email</label>
+            <input type="email" id="email" placeholder="Enter your email">
+            <label>Password</label>
+            <input type="password" id="password" placeholder="Enter your password">
+            <input type="button" id="button-login" value="Submit">
+        </form>
+        <p id="par2">Don't have an account? <a href="signup.html">Sign up here</a></p>
+    </div>
+</body>
+
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
+    import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
+    import {getDatabase, set, ref, update} from "https://www.gstatic.com/firebasejs/10.11.0/firebase-database.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyD6zg3u17kX4crlO5js5f7P1b_vAbg9-_U",
+      authDomain: "proiect-b5d26.firebaseapp.com",
+      databaseURL: "https://proiect-b5d26-default-rtdb.firebaseio.com",
+      projectId: "proiect-b5d26",
+      storageBucket: "proiect-b5d26.appspot.com",
+      messagingSenderId: "328224211496",
+      appId: "1:328224211496:web:1dba92c2ec73d00f7bab1d"
+    };
+  
+    
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+    const auth = getAuth();
+
+    const login = document.getElementById('button-login');
+
+    login.addEventListener('click', () => {
+        var email = document.getElementById('email').value;
+        var password = document.getElementById('password').value;
+
+        signInWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+               
+                const user = userCredential.user;
+                const dt=new Date();
+                update(ref(db, 'users/' + user.uid), {
+                lastlogin: dt,
+            });
+            window.location.href = "principal.html";
+               
+            })
+            .catch((error) => {
+               
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                alert(errorMessage);
+            });
+    });
+</script>
+</html>

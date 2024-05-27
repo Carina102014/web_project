@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Închiriere Auto</title>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+  <style>
+    body {
+      background-image: url('https://images7.alphacoders.com/369/369182.jpg');
+      color: white;
+      text-shadow: 2px 2px 4px #000000;
+      background-size: cover;
+      background-attachment: fixed;
+    }
+
+    .jumbotron {
+      background-image: url('https://c.wallhere.com/photos/59/82/lighting_red_white_rot_classic_car_wheel_sport-902027.jpg!d');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      text-shadow: 2px 2px 4px #000000;
+      opacity: 0.9;
+    }
+
+    .car-section {
+      margin-bottom: 2rem;
+      border: 2px solid #f0f0f0;
+      border-radius: 10px;
+      padding: 1rem;
+      transition: transform 0.3s ease-in-out;
+      background-color: rgba(7, 4, 0, 0.7);
+    }
+
+    .car-section:hover {
+      transform: translateY(-5px);
+    }
+
+    .car-description h5 {
+      margin-top: 0;
+    }
+
+    .car-description p {
+      margin-bottom: 0.5rem;
+    }
+
+    .car-gif img, .car-video img {
+      max-width: 100%;
+      border-radius: 10px;
+    }
+
+    h5 {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      .jumbotron {
+        padding: 2rem 1rem;
+      }
+
+      .jumbotron .container {
+        text-align: center;
+      }
+    }
+
+    a{
+      padding-left: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Închiriere Auto</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="principal.html">Mașini</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="cars.html">Detalii Mașini</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="find.html">Info</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" id="logoutBtn"><i class="fas fa-user"></i> Logout</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+
+<div class="jumbotron jumbotron-fluid">
+  <div class="container text-center">
+    <h1 class="display-4">Detalii Mașini</h1>
+    <p class="lead">Cele mai bune prețuri pentru închirieri auto.</p>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="car-section">
+    <a href="principal.html" style="color: inherit; text-decoration: none;">
+      <div class="row">
+        <div class="col-md-6 car-gif">
+          <img src="https://media.giphy.com/media/xUA7b1Iv7zcMD3bgjK/giphy.gif" alt="Porsche Taycan GIF">
+        </div>
+        <div class="col-md-6 car-description">
+          <h5>Porsche Taycan</h5>
+          <p>Accelerare fulgerătoare: Porsche Taycan oferă o experiență de conducere excepțională, cu o accelerație de la 0 la 100 km/h în doar câteva secunde, datorită sistemului său de propulsie electrică de înaltă performanță.
+              Performanțe de top: Taycan impresionează cu o putere remarcabilă, oferind versiuni Turbo și Turbo S care livrează până la 750 de cai putere, asigurând o experiență de condus dinamică și plină de adrenalină.
+              Autonomie extinsă: Cu o baterie de mare capacitate și un sistem de gestionare inteligentă a energiei, Porsche Taycan promite o autonomie impresionantă, permițând călătorii lungi fără compromisuri.</p>
+        </div>
+      </div>
+    </a>
+  </div>
+
+
+  <div class="car-section">
+    <a href="principal.html" style="color: inherit; text-decoration: none;">
+      <div class="row">
+        <div class="col-md-6 car-description">
+          <h5>Lamborghini Huracan</h5>
+          <p>Viteză uluitoare: Lamborghini Huracan se remarcă prin performanțele sale de top, oferind o viteză maximă impresionantă care îți va taia respirația în timp ce rulezi pe autostradă.
+              Motor puternic: Echipat cu un motor V10 aspirat, Huracan livrează o putere excepțională, permițându-ți să experimentezi o accelerație fulgerătoare și o rezervă de putere abundentă în orice moment.
+              Design impresionant: Cu linii agresive și un aspect futurist, Huracan atrage atenția oriunde merge, fiind un simbol al eleganței și performanței în lumea supercarurilor.
+              Manevrabilitate excelentă: Cu un sistem avansat de tracțiune integrală și o suspensie perfect calibrată, Huracan oferă o manevrabilitate precisă și o aderență remarcabilă în viraje, asigurând o experiență de conducere plină de satisfacții.</p>
+        </div>
+        <div class="col-md-6 car-video">
+          <img src="https://th.bing.com/th/id/R.3dd7a589372e7a9286379e5fa59f6708?rik=l%2bgPcHXRII5X8g&pid=ImgRaw&r=0" alt="Lamborghini Huracan" style="width: 100%">
+        </div>
+      </div>
+    </a>
+  </div>
+
+
+  <div class="car-section">
+    <a href="principal.html" style="color: inherit; text-decoration: none;">
+      <div class="row">
+        <div class="col-md-6 car-video">
+          <img src="https://media1.tenor.com/images/a0078f9ae8dcba99bb3c35689ade1ab2/tenor.gif?itemid=16342035" alt="Bugatti Chiron">
+        </div>
+        <div class="col-md-6 car-description">
+          <h5>Bugatti Chiron</h5>
+          <p>Viteza extremă: Bugatti Chiron este cunoscut pentru performanțele sale uluitoare, având capacitatea de a atinge viteze incredibile care îl plasează în topul listei celor mai rapide mașini de serie din lume.
+              Motor monstruos: Cu un motor W16 cu patru turbine care produce o putere de peste 1.500 de cai putere, Chiron oferă un nivel de performanță și putere fără precedent, propulsând mașina de la 0 la 100 km/h într-un timp incredibil de scurt.
+              Designul iconic: Cu linii fluide și un exterior futurist, Bugatti Chiron emană eleganță și agresivitate, atrăgând privirile oriunde merge. Fiecare aspect al designului său este meticulos proiectat pentru a îmbina forma și funcționalitatea într-un mod perfect.</p>
+        </div>
+      </div>
+    </a>
+  </div>
+
+
+  <div class="car-section">
+    <a href="principal.html" style="color: inherit; text-decoration: none;">
+      <div class="row">
+        <div class="col-md-6 car-description">
+          <h5>Frazer Nash</h5>
+          <p>Eleganță vintage: Frazer Nash este un exemplu clasic al eleganței și stilului britanic, cu linii fluide și un design atemporal care îmbină armonios frumusețea estetică cu performanța tehnică.
+              Performanțe de excepție: Deși poate părea un automobil retro, Frazer Nash este dotat cu un motor puternic și o configurație tehnică care îi oferă performanțe impresionante pentru epoca sa, asigurând o experiență de conducere plină de adrenalină.
+              Construcție artizanală: Fiecare Frazer Nash a fost construit manual, cu atenție la detalii și o muncă de artizanat de cea mai înaltă calitate. Această abordare tradițională a fabricației a contribuit la reputația sa de fiabilitate și durabilitate.</p>
+        </div>
+        <div class="col-md-6 car-video">
+          <img src="https://giffiles.alphacoders.com/992/99202.gif" alt="Frazer Nash">
+        </div>
+      </div>
+    </a>
+  </div>
+
+
+  <div class="car-section">
+    <a href="principal.html" style="color: inherit; text-decoration: none;">
+      <div class="row">
+        <div class="col-md-6 car-video">
+          <img src="https://media.giphy.com/media/tqGgFXggx3h16/giphy.gif" alt="BMW i8" style="width: 100%">
+        </div>
+        <div class="col-md-6 car-description">
+          <h5>BMW i8</h5>
+          <p>Performanțe impresionante: BMW i8 este propulsat de un sistem hibrid ce combină un motor electric cu un motor pe benzină, oferind o putere totală de peste 350 de cai putere și accelerații dinamice care îi asigură un sprint de la 0 la 100 km/h în doar câteva secunde.
+              Eficiență energetică remarcabilă: Grație tehnologiei sale hibride avansate, BMW i8 beneficiază de o eficiență energetică remarcabilă, oferind posibilitatea de a rula în mod complet electric pentru o distanță de până la 50 de kilometri, reducând astfel emisiile de carbon și consumul de combustibil.
+              Design futurist și aerodinamic: Cu linii sculpturale și detalii distincte care amintesc de o navă spațială, BMW i8 impresionează prin designul său futuristic și aerodinamic, care nu doar atrage privirile, ci optimizează și performanța aerodinamică pentru o stabilitate maximă la viteză.</p>
+        </div>
+      </div>
+    </a>
+  </div>
+
+
+  <div class="car-section">
+    <a href="principal.html" style="color: inherit; text-decoration: none;">
+      <div class="row">
+        <div class="col-md-6 car-description">
+          <h5>VW Golf V</h5>
+          <p>Design clasic și practic: Golf V păstrează liniile clasice ale modelelor anterioare, dar aduce și unele îmbunătățiri, inclusiv o linie aerodinamică modernizată și o siluetă compactă, perfect adaptată pentru utilizare urbană și rutieră.
+              Fiabilitate remarcabilă: Cunoscut pentru construcția sa robustă și pentru fiabilitatea sa de neegalat, Golf V este apreciat pentru durabilitatea sa și pentru capacitatea de a face față uzurii și condițiilor dificile de drum.
+              Economie de combustibil: Echipat cu motoare eficiente din punct de vedere al consumului de combustibil, Golf V oferă o economie de funcționare excelentă, fiind potrivit pe distanțe lungi.</p>
+        </div>
+        <div class="col-md-6 car-video">
+          <img src="https://th.bing.com/th/id/R.8e5a94a01f4fa43329d6212879490bec?rik=2zDetcTUbY1KCQ&riu=http%3a%2f%2f25.media.tumblr.com%2f523c9d4772142b03ae777c44f8e268c3%2ftumblr_mijtozAGkW1qarea0o1_500.gif&ehk=DdQnSHlEuaYJvRFtH14xqBhJY9wsK3xNzR1EDGkm0s8%3d&risl=&pid=ImgRaw&r=0" alt="VW Golf V">
+        </div>
+      </div>
+    </a>
+  </div>
+</div>
+
+
+<footer class="bg-dark text-white text-center py-4">
+  <div class="container">
+    <p>&copy; 2024 Închiriere Auto. Toate drepturile rezervate.</p>
+     <a href="www.csac.ro">www.csac.ro</a>
+    <a href=" https://scanstart.ro/"> https://scanstart.ro/</a>
+    <a href="https://graffino.com/">https://graffino.com/</a>
+  </div>
+</footer>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+  
+  $(document).ready(function() {
+    $(".rent-btn").click(function(e) {
+      e.preventDefault();
+      var carId = $(this).data("id");
+      localStorage.setItem("selectedCarId", carId);
+      window.location.href = "principal.html";
+    });
+
+    $("#logoutBtn").click(function() {
+      var logout = confirm("Ești sigur că vrei să te deloghezi?");
+      if (logout) {
+        alert("Ai fost delogat cu succes!");
+        window.location.href = "index.html";
+      } else {
+        alert("Delogarea a fost anulată.");
+      }
+    });
+  });
+</script>
+
+</body>
+</html>

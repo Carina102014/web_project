@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Locații Magazine</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            background-image: url('https://c.pxhere.com/photos/04/48/transfagarasan_romania_mountains_way_streamer-713401.jpg!d');
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+        }
+        
+        #map-container {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+        }
+        
+        #map {
+            height: 500px;
+            width: 100%;
+        }
+
+        .leaflet-popup-content-wrapper {
+            background-color: #FFF;
+            color: #333;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .leaflet-popup-content {
+            margin: 8px;
+        }
+
+        p {
+            padding-bottom: 20px;
+            color: rgb(11, 0, 0);
+            font-size: 20px;
+        }
+
+        h3 {color: rgb(0, 6, 11);
+            text-decoration: underline;
+            font-size: 40px;
+        }
+
+        h4{
+            color: rgb(0, 6, 11);
+            text-decoration: underline;
+        }
+       
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Închiriere Auto</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="principal.html">Mașini</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="cars.html">Detalii Mașini</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="find.html">Info</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" id="logoutBtn"><i class="fas fa-user"></i> Logout</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container mt-5">
+    <div class="row mt-5">
+        <div class="col-md-8 offset-md-2 text-center">
+            <h3 class="mb-3">Informații suplimentare</h3>
+            <p>Masina dvs. poate fi ridicată doar personal. Sa tineti cont ca aveti nevoie de un act de identitate la dumneavastra. Pentru nelamuriri sunati la 07XXXXXXXX, sau ne puteti contacta pe emailul thebestrent@gmail.com </p>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-8" id="map-container">
+            <h2 class="text-center mb-4">Unde ne găsiți magazinul</h2>
+            <div id="map"></div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+<script>
+    $(document).ready(function() {
+        
+        var locations = [
+            { coords: [45.7489, 24.1256], name: 'Sibiu', street: 'Aleea Mică 234' }
+        ];
+
+        var map = L.map('map').setView([45.7489, 24.1256], 14); 
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        var singleMarker = L.marker([45.7489, 24.1256]).addTo(map);
+        singleMarker.bindPopup('<b>Sibiu</b><br>Aleea Mică 234');
+    });
+
+    $(document).ready(function() {
+   
+   $("#logoutBtn").click(function() {
+     
+     var logout = confirm("Ești sigur că vrei să te deloghezi?");
+     if (logout == true) {
+       
+       alert("Ai fost delogat cu succes!");
+       window.location.href = "index.html";
+     } else {
+       
+       alert("Delogarea a fost anulată.");
+     }
+   });
+ });
+</script>
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h4 class="text-center mb-3">Program de lucru</h4>
+            <p><strong>Luni - Vineri:</strong> 09:00 - 18:00</p>
+            <p>În această perioadă, suntem disponibili să vă oferim asistență pentru închirierea auto și să răspundem întrebărilor dvs. Suntem aici pentru a vă ajuta să găsiți cea mai potrivită mașină pentru nevoile dvs.</p>
+        </div>
+    </div>
+</div>
+
+<footer class="bg-dark text-white text-center py-4">
+    <div class="container">
+        <p>&copy; 2024 Închiriere Auto. Toate drepturile rezervate.</p>
+        <a href="www.csac.ro">www.csac.ro</a>
+        <a href=" https://scanstart.ro/"> https://scanstart.ro/</a>
+        <a href="https://graffino.com/">https://graffino.com/</a>
+    </div>
+</footer>
+
+</body>
+</html>
